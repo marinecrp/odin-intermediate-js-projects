@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="exercise.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <div class="header">
+            <span id="title">My Library</span>
+            <button id="new-book-button">Add Book</button>
+        </div>
+        <div class="card-container"></div>
+    </div>
+    <dialog class="new-book-dialog">
+        <form method="dialog" id="new-book-form">
+            <p>Please enter the new book information:</p>
+            <div class="inputs-grid">
+                <label for="book-title">Title *</label>
+                <input type="text" id="book-title" name="book-title" required>
+                <label for="book-author">Author *</label>
+                <input type="text" id="book-author" name="book-author" required>
+                <label for="book-pages">No of Pages *</label>
+                <input type="number" name="book-pages" id="book-pages" required>
+                <label for="book-read">Read it yet?</label>
+                <input type="checkbox" name="book-read" id="book-read">
+            </div>
+            <div class="dialog-btns">
+                <button type="button" id="dialog-cancel">Cancel</button>
+                <button type="submit">Submit Book Information</button>
+            </div>
+        </form>
+    </dialog>
+    
+</body>
+</html>
