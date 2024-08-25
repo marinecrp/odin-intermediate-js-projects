@@ -15,6 +15,9 @@ function Book(title, author, pages, read) {
         info += "</em></p>"
         return info;
     }
+    this.toggleRead = function () {
+        this.read = !this.read;
+    }
 }
 
 function addBookToLibrary(book) {
@@ -27,11 +30,22 @@ function displayBookCard(book) {
     card.setAttribute("class", "book-card");
     card.style.border = "solid black 2px";
     card.innerHTML = book.info();
+
     const removeBtn = document.createElement("button");
     removeBtn.setAttribute("class", "remove-btn");
-    removeBtn.setAttribute("book-title", book.title);
+    removeBtn.setAttribute("book-index", myLibrary.indexOf(book));
     removeBtn.textContent = "Remove";
+    removeBtn.addEventListener("click", removeBtnCallBack);
     card.appendChild(removeBtn);
+
+    const readBtn = document.createElement("button");
+    readBtn.setAttribute("class", "read-btn");
+    readBtn.setAttribute("book-index", myLibrary.indexOf(book));
+    readBtn.setAttribute("isRead", book.read)
+    readBtn.textContent = "Read";
+    readBtn.addEventListener("click", readBtnCallBack)
+    card.appendChild(readBtn);
+    
     container.appendChild(card);
 }
 
@@ -49,21 +63,20 @@ function setAddNewBookCallBack(){
     })
 }
 
-function setRemoveBookCallBack(){
-    const removeBtns = document.querySelectorAll(".remove-btn");
-    removeBtns.forEach( (btn) => {
-        btn.addEventListener("click", removeBtnCallBack);
-    })
+function removeBtnCallBack(event){
+    const removedIndex = event.target.getAttribute("book-index");
+    myLibrary.splice(removedIndex, 1);
+    refreshCards();
 }
 
-function removeBtnCallBack(event){
-    const removedTitle = event.target.getAttribute("book-title");
-    myLibrary.forEach( (book) => {
-        if (book.title === removedTitle) {
-            const removedIndex = myLibrary.indexOf(book);
-            myLibrary.splice(removedIndex, 1);
-        }
-    })
+function readBtnCallBack(event){
+    const bookIndex = event.target.getAttribute("book-index");
+    const book = myLibrary[bookIndex];
+    book.toggleRead();
+    refreshCards();
+}
+
+function refreshCards(){
     const cardContainer = document.querySelector(".card-container");
     cardContainer.innerHTML = "";
     displayCards();
@@ -98,11 +111,6 @@ function setDialogCancelBtnCallBack() {
 }
 
 // initiation
-const book = new Book("Le Petit Prince", "Antoine de St-Exupéry", "80", true);
-addBookToLibrary(book);
-displayCards();
-
-setRemoveBookCallBack();
 setAddNewBookCallBack();
 setSubmitBtnCallBack()
 setDialogCancelBtnCallBack()

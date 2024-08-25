@@ -83,7 +83,7 @@ body {
     line-height: 1.2rem;
 }
 
-.remove-btn {
+.remove-btn, .read-btn {
     border-style: none;
     border-radius: 6px;
     background-color: #f5cac3;
@@ -94,7 +94,15 @@ body {
     padding: 0px 10px;
 }
 
-.remove-btn:active {
+.read-btn[isRead=false]{
+    background-color: #f7ede2;
+}
+
+.read-btn {
+    margin-left: 10px;
+}
+
+.remove-btn:active, .read-btn:active {
     transform: translate(2px, 2px);
     box-shadow: none;
 }
