@@ -1,0 +1,176 @@
+@font-face {
+    font-family: 'allerregular';
+    src: url('../fonts/aller_rg-webfont.woff2') format('woff2'),
+         url('../fonts/aller_rg-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    height: 100%;
+    min-height: 100%;;
+}
+
+body {
+    font-family: 'allerregular';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f7ede2;
+    margin: 0px;
+    gap: 7rem;
+}
+
+svg {
+    display: block;
+    fill: #f5cac3;
+}
+
+.player-card {
+    width: 10rem;
+    height: 10rem;
+    border: black 3px solid;
+    box-shadow: 5px 5px black;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.player-card[current=false] {
+    opacity: 30%;
+    box-shadow: none;
+}
+
+.player-card-header {
+    height: 25%;
+    background-color: #f5cac3;
+    border-radius: 20px 20px 0px 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-card-header > span {
+    font-size: 1.5rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.player-card-content {
+    flex: 1;
+    border-radius: 0px 0px 20px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-card-content svg {
+    height: 6rem;
+}
+
+.board-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 0.6rem;
+}
+
+.cell {
+    background-color: #FFFFFF70;
+    border-radius: 5px;
+    width: 5rem;
+    height: 5rem;
+    border: solid black 2px;
+    box-shadow: 2px 2px black;
+}
+
+.cell[occupied=false]:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.cell[occupied=true] {
+    box-shadow: none;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+}
+
+.restart-btn, .new-game-btn, .start-game-btn {
+    border-style: none;
+    border-radius: 6px;
+    background-color: #f5cac3;
+    border: solid black 2px;
+    box-shadow: 2px 2px black;
+    font-size: 1rem;
+    font-family: inherit;
+    padding: 0px 10px;
+}
+
+.restart-btn:active, .new-game-btn:active, .start-game-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: none;
+}
+
+.result-modal, .init-modal {
+    width: 20%;
+    background-color: #f7ede2;
+    border: solid black 3px;
+    border-radius: 20px;
+}
+
+.init-modal {
+    width: 40%;
+}
+
+.result-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.text-result {
+    display:block;
+    font-size: 2rem;
+}
+
+.inputs-grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    gap: 10px;
+    align-items: center;
+}
+
+.inputs-grid label {
+    justify-self: end;
+}
+
+.inputs-grid input {
+    border-style: none;
+    border: none;
+    border-radius: 5px;
+    height: 1.5rem;
+    width: 80%;
+    font-family: inherit;
+    font-size: inherit;
+}
+
+.form-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
